@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Посадочные страницы · Февраль–Март 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f6f8fc;
+  --card: #ffffff;
+  --card2: #f1f4f9;
+  --border: #e3e8f0;
+  --text: #0f1623;
+  --text2: #5a6478;
+  --text3: #9aa3b4;
+  --accent: #1d4ed8;
+  --accent-soft: #eef2ff;
+  --green: #0f7a45;
+  --green-soft: #e8f8ef;
+  --amber: #b45309;
+  --amber-soft: #fef3e2;
+  --shadow-sm: 0 1px 3px rgba(15,22,35,.06);
+  --shadow: 0 2px 12px rgba(15,22,35,.08);
+  --r: 12px;
+}
+
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --card: #161b24;
+  --card2: #1c2332;
+  --border: #252e40;
+  --text: #e2e8f4;
+  --text2: #8899bb;
+  --text3: #4e5e7a;
+  --accent: #4d8eff;
+  --accent-soft: #1a2640;
+  --green: #22c55e;
+  --green-soft: #0d1f14;
+  --amber: #f59e0b;
+  --amber-soft: #1f1a0a;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+  --shadow: 0 4px 20px rgba(0,0,0,.35);
+}
+
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; transition: background .2s, color .2s; }
+
+/* HEADER */
+.hdr { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+.hdr-logo { font-weight: 800; font-size: 15px; letter-spacing: -.01em; display: flex; align-items: center; gap: 9px; }
+.hdr-bar { width: 4px; height: 20px; border-radius: 2px; background: linear-gradient(180deg, var(--accent) 0%, #60a5fa 100%); }
+.hdr-right { display: flex; align-items: center; gap: 10px; }
+.chip { background: var(--accent-soft); color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 20px; padding: 3px 12px; font-size: 12px; font-weight: 600; }
+.theme-btn { background: var(--card2); border: 1px solid var(--border); border-radius: 20px; padding: 5px 14px; font: inherit; font-size: 12px; font-weight: 600; color: var(--text2); cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 5px; }
+.theme-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+/* WRAP */
+.wrap { max-width: 1380px; margin: 0 auto; padding: 26px 32px 56px; }
+
+/* KPI */
+.kpi-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 22px 24px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 18px; transition: box-shadow .2s; }
+.kpi:hover { box-shadow: var(--shadow); }
+.kpi-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.kpi-body { flex: 1; }
+.kpi-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
+.kpi-val { font-size: 36px; font-weight: 800; letter-spacing: -.02em; line-height: 1; }
+.kpi-sub { font-size: 12px; color: var(--text3); margin-top: 5px; }
+.kpi-sub b { color: var(--text2); font-weight: 600; }
+
+/* SECTION */
+.section { margin-bottom: 28px; }
+.sec-hd { margin-bottom: 14px; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.sec-title { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+.sec-count { font-size: 12px; color: var(--text3); background: var(--card2); border: 1px solid var(--border); border-radius: 10px; padding: 2px 9px; font-weight: 600; }
+
+/* FILTER TABS */
+.tabs { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab { background: var(--card); border: 1.5px solid var(--border); border-radius: 22px; padding: 6px 16px; font: inherit; font-size: 13px; font-weight: 600; color: var(--text2); cursor: pointer; transition: all .15s; white-space: nowrap; }
+.tab:hover { border-color: var(--accent); color: var(--accent); }
+.tab.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 10px rgba(29,78,216,.25); }
+.tab .cnt { display: inline-block; background: rgba(255,255,255,.22); border-radius: 9px; padding: 0 6px; font-size: 11px; margin-left: 4px; }
+.tab:not(.active) .cnt { background: var(--card2); color: var(--text3); }
+
+/* TABLE */
+.tbl-wrap { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); box-shadow: var(--shadow-sm); overflow: hidden; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead tr { background: var(--card2); border-bottom: 2px solid var(--border); }
+th { padding: 11px 16px; text-align: left; font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .07em; white-space: nowrap; cursor: pointer; user-select: none; }
+th:hover { color: var(--accent); }
+th.sorted { color: var(--accent); }
+th .arr { font-size: 10px; margin-left: 2px; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: color-mix(in srgb, var(--accent-soft) 60%, var(--card)); }
+td { padding: 10px 16px; vertical-align: middle; }
+.td-r { text-align: right; }
+
+/* URL cell */
+.url-link { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; color: var(--accent); text-decoration: none; word-break: break-all; display: inline-flex; align-items: center; gap: 5px; transition: opacity .15s; }
+.url-link:hover { opacity: .75; text-decoration: underline; }
+.url-link .ext-icon { font-size: 10px; opacity: .6; flex-shrink: 0; }
+
+/* Company badge */
+.comp { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+
+/* Numbers */
+.num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; text-align: right; }
+
+/* CR pills */
+.pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 14px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.hi  { background: var(--green-soft); color: var(--green); }
+.mid { background: var(--amber-soft); color: var(--amber); }
+.lo  { background: var(--card2); color: var(--text3); }
+
+/* Bar */
+.bar-row { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+.bar-bg { width: 50px; height: 4px; border-radius: 2px; background: var(--border); overflow: hidden; flex-shrink: 0; }
+.bar-fill { height: 100%; border-radius: 2px; }
+
+/* TOP 10 */
+.top10 { display: flex; flex-direction: column; gap: 9px; }
+.t10 { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 14px 18px; box-shadow: var(--shadow-sm); display: grid; grid-template-columns: 28px 1fr auto; gap: 14px; align-items: center; transition: box-shadow .18s; }
+.t10:hover { box-shadow: var(--shadow); }
+.t10-rank { font-size: 13px; font-weight: 800; color: var(--text3); text-align: center; }
+.t10-rank.r1 { color: #b8860b; }
+.t10-rank.r2 { color: #778899; }
+.t10-rank.r3 { color: #8b5a2b; }
+.t10-info {}
+.t10-url-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; flex-wrap: wrap; }
+.t10-url { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; font-weight: 600; color: var(--accent); text-decoration: none; transition: opacity .15s; }
+.t10-url:hover { opacity: .7; text-decoration: underline; }
+.t10-meta { font-size: 11.5px; color: var(--text3); }
+.t10-metrics { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+.t10-m { text-align: right; }
+.t10-mv { font-size: 17px; font-weight: 800; letter-spacing: -.01em; }
+.t10-ml { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .05em; margin-top: 1px; }
+
+/* Totals row */
+.row-total { background: color-mix(in srgb, var(--accent-soft) 70%, var(--card2)) !important; border-bottom: 2px solid var(--border) !important; }
+.row-total td { font-weight: 700; padding: 11px 16px; }
+.row-total .num { font-size: 13.5px; }
+
+/* Empty */
+.empty { text-align: center; padding: 40px 16px; color: var(--text3); font-size: 13px; }
+
+@media (max-width: 800px) {
+  .kpi-row { grid-template-columns: 1fr; }
+  .wrap { padding: 16px 16px 48px; }
+  .hdr { padding: 0 16px; }
+  .t10 { grid-template-columns: 24px 1fr; }
+  .t10-metrics { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-logo"><div class="hdr-bar"></div>Посадочные страницы</div>
+  <div class="hdr-right">
+    <span class="chip">Февраль – Март 2026</span>
+    <button class="theme-btn" onclick="toggleTheme()"><span id="t-icon">🌙</span><span id="t-lbl">Тёмная</span></button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- KPI -->
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-icon" style="background:#eef2ff">📊</div>
+      <div class="kpi-body">
+        <div class="kpi-label">CR Клик → Заявка</div>
+        <div class="kpi-val" style="color:var(--accent)" id="kv1">—</div>
+        <div class="kpi-sub" id="ks1">—</div>
+      </div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-icon" style="background:#e8f8ef">✅</div>
+      <div class="kpi-body">
+        <div class="kpi-label">CR Заявка → БП</div>
+        <div class="kpi-val" style="color:var(--green)" id="kv2">—</div>
+        <div class="kpi-sub" id="ks2">—</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN TABLE -->
+  <div class="section">
+    <div class="sec-hd">
+      <div class="sec-title">Посадочные страницы</div>
+      <span class="sec-count" id="tbl-count">0 страниц</span>
+    </div>
+
+    <div class="tabs" id="tabs"></div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-col="url">Страница <span class="arr">↕</span></th>
+            <th data-col="company">Компания <span class="arr">↕</span></th>
+            <th data-col="clicks" class="sorted td-r">Клики <span class="arr">↓</span></th>
+            <th data-col="leads" class="td-r">Заявки <span class="arr">↕</span></th>
+            <th data-col="bp" class="td-r">БП <span class="arr">↕</span></th>
+            <th data-col="cr1" class="td-r">CR Клик→Заявка <span class="arr">↕</span></th>
+            <th data-col="cr2" class="td-r">CR Заявка→БП <span class="arr">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="tbl-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- TOP 10 -->
+  <div class="section">
+    <div class="sec-hd">
+      <div class="sec-title">Топ‑10 посадочных страниц</div>
+      <span class="sec-count">по количеству заявок</span>
+    </div>
+    <div class="top10" id="top10"></div>
+  </div>
+
+</div>
+
+<script>
+const ALL_DATA = [
+  {company:"ЕМК РФ",url:"emk-steel.ru/flanges",clicks:269,leads:14,bp:3},
+  {company:"ЕМК РФ",url:"emk-steel.ru/sheets",clicks:123,leads:11,bp:3},
+  {company:"ЕМК РФ",url:"emk-world.ru/pipes",clicks:411,leads:23,bp:8},
+  {company:"ЕМК РФ",url:"emk-world.ru/a333gr6",clicks:118,leads:3,bp:0},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/rexard",clicks:222,leads:18,bp:12},
+  {company:"ЕМК РФ",url:"emk-world.ru/fittings",clicks:7,leads:1,bp:0},
+  {company:"ЕМК РФ",url:"emk-steel.ru/balki",clicks:117,leads:5,bp:2},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy",clicks:111,leads:3,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/ampipes",clicks:346,leads:14,bp:5},
+  {company:"ГТО",url:"hard-met.ru/hard",clicks:668,leads:58,bp:32},
+  {company:"ЕМК РФ",url:"emk-steel.ru",clicks:481,leads:21,bp:5},
+  {company:"ЕМК РФ",url:"emk-met.ru/zra/asco",clicks:2,leads:2,bp:0},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/hardox",clicks:388,leads:28,bp:19},
+  {company:"ЕМК РФ",url:"emk24.ru/wiki/spetsialnye_stali/rexard_16196504",clicks:159,leads:8,bp:1},
+  {company:"ЕМК РФ",url:"emk-steel.ru/nickel",clicks:457,leads:22,bp:9},
+  {company:"ЕМК РФ",url:"emk-met.ru/zra",clicks:11,leads:4,bp:1},
+  {company:"ЕМК КЗ",url:"metal.emk24.kz/rails",clicks:4,leads:1,bp:1},
+  {company:"ЕМК РФ",url:"emk-world.ru/stauff",clicks:23,leads:4,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/zakaz",clicks:819,leads:52,bp:8},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/rexard/rexard450",clicks:16,leads:2,bp:1},
+  {company:"ЕМК РФ",url:"emk-world.ru/flanges/asme",clicks:64,leads:4,bp:1},
+  {company:"ЕМК РФ",url:"emk-steel.ru/shveller",clicks:36,leads:1,bp:0},
+  {company:"ЕМК КЗ",url:"metal.emk24.kz",clicks:59,leads:2,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/rexard",clicks:67,leads:1,bp:0},
+  {company:"ЕМК РФ",url:"emk-steel.ru/zakaz",clicks:7,leads:2,bp:1},
+  {company:"ГТО",url:"hard-met.ru",clicks:894,leads:66,bp:34},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/rexard/rexard500",clicks:4,leads:1,bp:0},
+  {company:"ЕМК УЗ",url:"metal.emk24.uz/imp",clicks:15,leads:1,bp:0},
+  {company:"ЕМК РФ",url:"emk-steel.ru/ampipes",clicks:249,leads:10,bp:4},
+  {company:"ЕМК РФ",url:"emk-steel.ru/duplex",clicks:135,leads:9,bp:3},
+  {company:"ЕМК РФ",url:"emk-world.ru",clicks:1475,leads:92,bp:8},
+  {company:"ЕМК РФ",url:"emk-world.ru/aisipipes",clicks:34,leads:3,bp:0},
+  {company:"ЕМК КЗ",url:"metal.emk24.kz/hard",clicks:16,leads:4,bp:0},
+  {company:"ЕМК РФ",url:"emk-steel.ru/pipes",clicks:144,leads:15,bp:0},
+  {company:"ЕМК УЗ",url:"metal.emk24.uz",clicks:54,leads:1,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/rails",clicks:223,leads:11,bp:2},
+  {company:"ЕМК РФ",url:"emk-world.ru/sheets",clicks:273,leads:10,bp:2},
+  {company:"ЕМК РФ",url:"emk-world.ru/flanges",clicks:336,leads:20,bp:1},
+  {company:"ЕМК КЗ",url:"emk-world.ru/zakaz",clicks:3,leads:1,bp:1},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/sidur",clicks:8,leads:2,bp:2},
+  {company:"ЕМК РФ",url:"emk-world.ru/high",clicks:66,leads:5,bp:3},
+  {company:"ЕМК РФ",url:"emk-world.ru/heads",clicks:168,leads:27,bp:2},
+  {company:"ЕМК КЗ",url:"metal.emk24.kz/nickel",clicks:4,leads:0,bp:0},
+  {company:"ЕМК РФ",url:"emk-steel.ru/aisipipes",clicks:20,leads:0,bp:0},
+  {company:"ЕМК РФ",url:"emk-met.ru/zra/samson",clicks:2,leads:0,bp:0},
+  {company:"ГТО",url:"gto365.ru/catalog/vysokoprochnye-listy",clicks:15,leads:0,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/nickel",clicks:5,leads:0,bp:0},
+  {company:"ЕМК КЗ",url:"gto365.ru/catalog/iznosostoykie-listy/hardox",clicks:2,leads:0,bp:0},
+  {company:"ГТО",url:"gto365.ru/catalog/iznosostoykie-listy/dillidur",clicks:4,leads:0,bp:0},
+  {company:"ЕМК КЗ",url:"emk-world.ru",clicks:3,leads:0,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/balki",clicks:4,leads:0,bp:0},
+  {company:"ЕМК РФ",url:"emk-world.ru/prutki",clicks:46,leads:0,bp:0}
+];
+
+const TOTALS = {
+  clicks: ALL_DATA.reduce((s,r)=>s+r.clicks,0),
+  leads:  ALL_DATA.reduce((s,r)=>s+r.leads,0),
+  bp:     ALL_DATA.reduce((s,r)=>s+r.bp,0)
+};
+
+const COMPANIES = ['Все', ...['ГТО','ЕМК КЗ','ЕМК РФ','ЕМК УЗ']];
+
+const COMP_COLORS = {
+  'ЕМК РФ': {bg:'#eef2ff', color:'#1d4ed8'},
+  'ГТО':    {bg:'#fef3e2', color:'#b45309'},
+  'ЕМК КЗ': {bg:'#e8f8ef', color:'#0f7a45'},
+  'ЕМК УЗ': {bg:'#f5f0ff', color:'#6d28d9'},
+};
+
+let activeCompany = 'Все';
+let sortCol = 'clicks';
+let sortDir = -1;
+
+const fmt = n => Number(n).toLocaleString('ru');
+const pct = (a,b) => b > 0 ? (a/b*100).toFixed(1)+'%' : '—';
+
+function crPill(val_str) {
+  if (val_str === '—') return `<span class="pill lo">—</span>`;
+  const v = parseFloat(val_str);
+  const cls = v >= 8 ? 'hi' : v >= 3 ? 'mid' : 'lo';
+  return `<span class="pill ${cls}">${val_str}</span>`;
+}
+function crPill2(val_str) {
+  if (val_str === '—') return `<span class="pill lo">—</span>`;
+  const v = parseFloat(val_str);
+  const cls = v >= 30 ? 'hi' : v >= 15 ? 'mid' : 'lo';
+  return `<span class="pill ${cls}">${val_str}</span>`;
+}
+function compBadge(c) {
+  const s = COMP_COLORS[c] || {bg:'#f1f4f9',color:'#5a6478'};
+  return `<span class="comp" style="background:${s.bg};color:${s.color}">${c}</span>`;
+}
+function urlLink(url, label) {
+  const href = url.startsWith('http') ? url : 'https://' + url;
+  return `<a class="url-link" href="${href}" target="_blank" rel="noopener noreferrer">${label || url}<span class="ext-icon">↗</span></a>`;
+}
+
+/* ── KPI ── */
+function renderKPI() {
+  const cr1 = pct(TOTALS.leads, TOTALS.clicks);
+  const cr2 = pct(TOTALS.bp, TOTALS.leads);
+  document.getElementById('kv1').textContent = cr1;
+  document.getElementById('ks1').innerHTML = `<b>${fmt(TOTALS.leads)}</b> заявок / <b>${fmt(TOTALS.clicks)}</b> кликов`;
+  document.getElementById('kv2').textContent = cr2;
+  document.getElementById('ks2').innerHTML = `<b>${TOTALS.bp}</b> БП / <b>${TOTALS.leads}</b> заявок`;
+}
+
+/* ── TABS ── */
+function renderTabs() {
+  const counts = {};
+  COMPANIES.forEach(c => {
+    counts[c] = c === 'Все' ? ALL_DATA.length : ALL_DATA.filter(r=>r.company===c).length;
+  });
+  document.getElementById('tabs').innerHTML = COMPANIES.map(c =>
+    `<button class="tab ${c===activeCompany?'active':''}" onclick="setCompany('${c}')">
+      ${c}<span class="cnt">${counts[c]}</span>
+    </button>`
+  ).join('');
+}
+
+function setCompany(c) {
+  activeCompany = c;
+  renderTabs();
+  renderTable();
+}
+
+/* ── TABLE ── */
+function getFiltered() {
+  let d = activeCompany === 'Все' ? [...ALL_DATA] : ALL_DATA.filter(r=>r.company===activeCompany);
+  d = d.map(r => ({
+    ...r,
+    cr1: r.clicks > 0 ? +(r.leads/r.clicks*100).toFixed(1) : 0,
+    cr2: r.leads  > 0 ? +(r.bp/r.leads*100).toFixed(1)    : 0,
+  }));
+  d.sort((a,b) => {
+    const av = a[sortCol] ?? 0, bv = b[sortCol] ?? 0;
+    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+    return sortDir * (bv - av);
+  });
+  return d;
+}
+
+const maxClicks = Math.max(...ALL_DATA.map(r=>r.clicks), 1);
+
+function renderTable() {
+  const rows = getFiltered();
+  document.getElementById('tbl-count').textContent = `${rows.length} страниц`;
+
+  if (!rows.length) {
+    document.getElementById('tbl-body').innerHTML = `<tr><td colspan="7" class="empty">Нет данных</td></tr>`;
+    return;
+  }
+
+  // Totals for filtered set
+  const totClicks = rows.reduce((s,r)=>s+r.clicks,0);
+  const totLeads  = rows.reduce((s,r)=>s+r.leads,0);
+  const totBp     = rows.reduce((s,r)=>s+r.bp,0);
+  const totCr1 = pct(totLeads, totClicks);
+  const totCr2 = pct(totBp, totLeads);
+
+  const totalsRow = `<tr class="row-total">
+    <td style="font-size:12px;color:var(--text2);font-weight:700">ИТОГО <span style="font-weight:500;color:var(--text3)">(${rows.length} стр.)</span></td>
+    <td></td>
+    <td class="td-r"><div class="bar-row"><span class="num">${fmt(totClicks)}</span><div class="bar-bg"><div class="bar-fill" style="width:50px;background:var(--accent)"></div></div></div></td>
+    <td class="num td-r" style="color:var(--accent)">${totLeads}</td>
+    <td class="num td-r" style="color:var(--green)">${totBp}</td>
+    <td class="td-r">${crPill(totCr1)}</td>
+    <td class="td-r">${crPill2(totCr2)}</td>
+  </tr>`;
+
+  document.getElementById('tbl-body').innerHTML = totalsRow + rows.map(r => {
+    const cr1s = r.clicks > 0 ? r.cr1+'%' : '—';
+    const cr2s = r.leads  > 0 ? r.cr2+'%' : '—';
+    const barW = Math.round(r.clicks / maxClicks * 50);
+    return `<tr>
+      <td>${urlLink(r.url)}</td>
+      <td>${compBadge(r.company)}</td>
+      <td class="td-r">
+        <div class="bar-row">
+          <span class="num">${fmt(r.clicks)}</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:${barW}px;background:var(--accent)"></div></div>
+        </div>
+      </td>
+      <td class="num td-r" style="color:var(--accent)">${r.leads}</td>
+      <td class="num td-r" style="color:var(--green)">${r.bp}</td>
+      <td class="td-r">${crPill(cr1s)}</td>
+      <td class="td-r">${crPill2(cr2s)}</td>
+    </tr>`;
+  }).join('');
+
+  // Update sort arrows
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    const col = th.dataset.col;
+    const arr = th.querySelector('.arr');
+    th.classList.toggle('sorted', col === sortCol);
+    if (arr) arr.textContent = col === sortCol ? (sortDir===-1?'↓':'↑') : '↕';
+  });
+}
+
+/* ── TOP 10 ── */
+function renderTop10() {
+  const top = [...ALL_DATA].sort((a,b)=>b.leads-a.leads).slice(0,10);
+  const rankClass = ['r1','r2','r3','','','','','','',''];
+  const medalEmoji = ['🥇','🥈','🥉'];
+  document.getElementById('top10').innerHTML = top.map((r,i) => {
+    const cr1 = pct(r.leads, r.clicks);
+    const cr2 = pct(r.bp, r.leads);
+    const cs = COMP_COLORS[r.company] || {bg:'#f1f4f9',color:'#5a6478'};
+    return `<div class="t10">
+      <div class="t10-rank ${rankClass[i]}">${i<3 ? medalEmoji[i] : i+1}</div>
+      <div class="t10-info">
+        <div class="t10-url-row">
+          <a class="t10-url" href="https://${r.url}" target="_blank" rel="noopener noreferrer">${r.url} ↗</a>
+          <span class="comp" style="background:${cs.bg};color:${cs.color};font-size:11px;padding:1px 9px">${r.company}</span>
+        </div>
+        <div class="t10-meta">
+          Клики: <b style="color:var(--text2)">${fmt(r.clicks)}</b> &nbsp;·&nbsp;
+          CR кл→зяв: <b style="color:var(--accent)">${cr1}</b> &nbsp;·&nbsp;
+          CR зяв→БП: <b style="color:var(--green)">${cr2}</b>
+        </div>
+      </div>
+      <div class="t10-metrics">
+        <div class="t10-m">
+          <div class="t10-mv" style="color:var(--accent)">${r.leads}</div>
+          <div class="t10-ml">заявки</div>
+        </div>
+        <div class="t10-m">
+          <div class="t10-mv" style="color:var(--green)">${r.bp}</div>
+          <div class="t10-ml">БП</div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── SORT ── */
+document.querySelectorAll('th[data-col]').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) sortDir *= -1;
+    else { sortCol = col; sortDir = -1; }
+    renderTable();
+  });
+});
+
+/* ── THEME ── */
+function toggleTheme() {
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', dark ? '' : 'dark');
+  document.getElementById('t-icon').textContent = dark ? '🌙' : '☀️';
+  document.getElementById('t-lbl').textContent  = dark ? 'Тёмная' : 'Светлая';
+}
+
+/* ── INIT ── */
+renderKPI();
+renderTabs();
+renderTable();
+renderTop10();
+</script>
+</body>
+</html>
